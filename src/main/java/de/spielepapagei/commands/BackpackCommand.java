@@ -15,11 +15,8 @@ public class BackpackCommand implements CommandExecutor {
         if(!(sender instanceof Player)) {
             return true;
         }
-
         Player player = (Player) sender;
-
         Backpack backpack = Main.getInstance().getBackpackManager().getBackpack(player.getUniqueId());
-
         player.openInventory(backpack.getInventory());
         return true;
     }
