@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import de.spielepapagei.Main;
-import de.spielepapagei.backpack.Backpack;
+import de.spielepapagei.inventory.backpack.Backpack;
 
 public class BackpackCommand implements CommandExecutor {
 

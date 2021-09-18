@@ -1,6 +1,6 @@
 package de.spielepapagei;
 
-import de.spielepapagei.backpack.BackpackManager;
+import de.spielepapagei.inventory.backpack.BackpackManager;
 import de.spielepapagei.commands.BackpackCommand;
 import de.spielepapagei.listener.JoinListener;
 import de.spielepapagei.listener.QuitListener;

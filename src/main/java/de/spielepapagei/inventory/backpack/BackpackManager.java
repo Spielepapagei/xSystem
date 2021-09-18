@@ -1,4 +1,4 @@
-package de.spielepapagei.backpack;
+package de.spielepapagei.inventory.backpack;
 
 import de.spielepapagei.Main;
 import de.spielepapagei.utils.Data;

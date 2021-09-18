@@ -14,14 +14,15 @@ public class DefaultScoreboard extends ScoreboardBuilder {
     public DefaultScoreboard(Player player){
         super(player, ChatColor.BLUE + "     Spielepapagei#7353     ");
 
-        socialId = 0;
-        run();
+        //socialId = 0;
+        //run();
     }
 
 
     @Override
     public void createScoreboard() {
         //MAX 64 ZEICHEN
+        /*
         setScore(ChatColor.DARK_GRAY.toString(), 7);
         setScore(ChatColor.GRAY + "Dein Rang" + ChatColor.DARK_GRAY + ":", 6);
 
@@ -36,6 +37,7 @@ public class DefaultScoreboard extends ScoreboardBuilder {
         setScore(ChatColor.RED.toString(), 2);
         setScore(ChatColor.RED + Objects.requireNonNull(player.getAddress()).getHostName(), 1);
         setScore(ChatColor.AQUA.toString(), 0);
+         */
     }
 
     @Override
