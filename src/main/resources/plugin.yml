@@ -7,5 +7,5 @@ authors: [ Spielepapagei ]
 commands:
   backpack:
     aliases: [ bp ]
-  lobby:
+  jump:
     aliases: [ join ]

@@ -1,5 +1,6 @@
 package de.spielepapagei;
 
+import de.spielepapagei.commands.ConnectCommand;
 import de.spielepapagei.inventory.backpack.BackpackManager;
 import de.spielepapagei.commands.BackpackCommand;
 import de.spielepapagei.listener.JoinListener;
@@ -29,6 +30,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + " » Initialisiere xSystem");
+
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         //Listener
         PluginManager manager = Bukkit.getPluginManager();
         manager.registerEvents(new JoinListener(), this);
@@ -37,11 +41,15 @@ public final class Main extends JavaPlugin {
         backpackManager = new BackpackManager();
         //Commands
         getCommand("backpack").setExecutor(new BackpackCommand());
+        getCommand("jump").setExecutor(new ConnectCommand());
     }
 
     @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + " » xSystem wird gesichert");
+
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
+
         //save
         backpackManager.save();
         data.save();
