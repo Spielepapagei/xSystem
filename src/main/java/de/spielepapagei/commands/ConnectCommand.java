@@ -13,7 +13,7 @@ public class ConnectCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Du bist Kein Spieler!");
             return false;
         }
@@ -25,10 +25,8 @@ public class ConnectCommand implements CommandExecutor {
         out.writeUTF("Connect");
         out.writeUTF(args[0]);
 
-        Player player = (Player) sender;
         sender.sendMessage(ChatColor.GREEN + "Connecting to " + args[0] + "...");
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
-
         return true;
     }
 }

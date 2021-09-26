@@ -1,4 +1,4 @@
-package de.spielepapagei.inventory.backpack;
+package de.spielepapagei.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

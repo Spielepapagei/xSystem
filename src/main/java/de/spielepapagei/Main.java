@@ -1,9 +1,12 @@
 package de.spielepapagei;
 
 import de.spielepapagei.commands.ConnectCommand;
-import de.spielepapagei.inventory.backpack.BackpackManager;
+import de.spielepapagei.commands.GamemodeCommand;
+import de.spielepapagei.commands.NavigatorCommand;
+import de.spielepapagei.inventory.BackpackManager;
 import de.spielepapagei.commands.BackpackCommand;
 import de.spielepapagei.listener.JoinListener;
+import de.spielepapagei.listener.NavigatorListener;
 import de.spielepapagei.listener.QuitListener;
 import de.spielepapagei.utils.Config;
 import de.spielepapagei.utils.Data;
@@ -11,6 +14,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class Main extends JavaPlugin {
 
@@ -35,13 +40,18 @@ public final class Main extends JavaPlugin {
 
         //Listener
         PluginManager manager = Bukkit.getPluginManager();
-        manager.registerEvents(new JoinListener(), this);
-        manager.registerEvents(new QuitListener(), this);
+        manager.registerEvents(new JoinListener(),this);
+        manager.registerEvents(new QuitListener(),this);
+        manager.registerEvents(new NavigatorListener(),this);
+        //Commands
+        Objects.requireNonNull(getCommand("backpack")).setExecutor(new BackpackCommand());
+        Objects.requireNonNull(getCommand("jump")).setExecutor(new ConnectCommand());
+        Objects.requireNonNull(getCommand("gm")).setExecutor(new GamemodeCommand ());
+        Objects.requireNonNull(getCommand("navigator")).setExecutor(new NavigatorCommand());
+        //Auto Complete
+        Objects.requireNonNull(getCommand("gm")).setTabCompleter(new GamemodeCommand());
         //Manager
         backpackManager = new BackpackManager();
-        //Commands
-        getCommand("backpack").setExecutor(new BackpackCommand());
-        getCommand("jump").setExecutor(new ConnectCommand());
     }
 
     @Override
@@ -54,15 +64,6 @@ public final class Main extends JavaPlugin {
         backpackManager.save();
         data.save();
         config.save();
-    }
-
-    private void checkIfBungee() {
-        if (!getServer().spigot().getConfig().getConfigurationSection("settings").getBoolean("settings.bungeecord")) {
-            getLogger().severe("This server is not BungeeCord.");
-            getLogger().severe("If the server is already hooked to BungeeCord, please enable it into your spigot.yml aswell.");
-            getLogger().severe("Plugin disabled!");
-            getServer().getPluginManager().disablePlugin(this);
-        }
     }
 
     public Config getConfiguration() {

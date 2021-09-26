@@ -3,9 +3,12 @@ version: ${project.version}
 main: de.spielepapagei.Main
 api-version: 1.16
 authors: [ Spielepapagei ]
-
 commands:
   backpack:
     aliases: [ bp ]
   jump:
     aliases: [ join ]
+  gamemodegm:
+    aliases: [ gm ]
+  navigator:
+    aliases: [ nav ]
