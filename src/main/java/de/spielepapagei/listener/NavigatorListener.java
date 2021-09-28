@@ -8,16 +8,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import static de.spielepapagei.commands.NavigatorCommand.Navigator;
-
 public class NavigatorListener implements Listener {
 
     @EventHandler
     public void onInvClick(InventoryClickEvent e) {
         if (e.getCurrentItem() == null) return;
-        if (e.getClickedInventory() == Navigator) {
-            return;
-        } else
+        if (!e.getView().getTitle().equals("Navigator")) return;
         e.setResult(Event.Result.DENY);
         Player p = (Player) e.getWhoClicked();
         if (e.getCurrentItem().getType() == Material.NETHER_STAR) {
