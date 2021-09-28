@@ -16,12 +16,12 @@ public class NavigatorListener implements Listener {
     public void onInvClick(InventoryClickEvent e) {
         if (e.getCurrentItem() == null) return;
         if (e.getClickedInventory() == Navigator) {
-            e.getResult();
-            e.setResult(Event.Result.DENY);
-            if (e.getCurrentItem().getType() == Material.NETHER_STAR) {
-                Player p = (Player) e.getWhoClicked();
-                p.sendMessage(ChatColor.GREEN + "Sending to Lobby");
-            }
+            return;
+        } else
+        e.setResult(Event.Result.DENY);
+        Player p = (Player) e.getWhoClicked();
+        if (e.getCurrentItem().getType() == Material.NETHER_STAR) {
+            p.sendMessage(ChatColor.GREEN + "Sending to Lobby");
         }
     }
 }

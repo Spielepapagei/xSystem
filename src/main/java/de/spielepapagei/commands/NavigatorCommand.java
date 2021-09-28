@@ -17,18 +17,17 @@ public class NavigatorCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Du bist Kein Spieler!");
             return false;
         }
         Nav();
-        Player player = (Player) sender;
         player.openInventory(Navigator);
         return true;
     }
 
     private void Nav() {
-        Navigator = Bukkit.createInventory(null, 1*9, ChatColor.DARK_GRAY.toString() + ChatColor.BOLD + "» " + ChatColor.GREEN + "Navigator");
+        Navigator = Bukkit.createInventory(null, 9, ChatColor.DARK_GRAY.toString() + ChatColor.BOLD + "» " + ChatColor.GREEN + "Navigator");
 
         Navigator.setItem(2, new ItemBuilder(Material.REDSTONE)
                  .displayname(ChatColor.GREEN + "Redstone World")
@@ -42,7 +41,7 @@ public class NavigatorCommand implements CommandExecutor {
                  .build());
         Navigator.setItem(6, new ItemBuilder(Material.MINECART)
                  .displayname(ChatColor.DARK_BLUE + "Minekart")
-                 .lore("",ChatColor.GRAY + "Ein Kart game",ChatColor.DARK_GRAY + "by " + ChatColor.BLUE + "Spielepapagei.de")
+                 .lore("",ChatColor.GRAY + "Ein Kart game",ChatColor.DARK_GRAY + "by " + ChatColor.BLUE + "Spielpapagei.de")
                  .flag(ItemFlag.HIDE_ATTRIBUTES)
                  .build());
     }
